@@ -1,0 +1,319 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Writing Tool: Career & SDG</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f4ff;
+            margin: 30px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4a6fa5;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #6b728e;
+            font-size: 1.5em;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2::before {
+            content: '📝';
+            font-size: 1.2em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9fbff;
+            border-radius: 10px;
+            border: 1px solid #e0e7ff;
+        }
+        label {
+            font-weight: bold;
+            color: #4a6fa5;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border: 1px solid #c3dafe;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 1em;
+            background-color: #f9fbff;
+            transition: border-color 0.3s;
+        }
+        textarea:focus {
+            border-color: #4a6fa5;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6b728e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #4a6fa5;
+        }
+        .counter {
+            font-size: 0.9em;
+            color: #6b728e;
+            margin-top: 5px;
+        }
+        .suggestions {
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #e0e7ff;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #4a6fa5;
+            display: none;
+            border-left: 4px solid #4a6fa5;
+        }
+        .error {
+            color: #d9534f;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        #essay-preview {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9fbff;
+            border: 1px solid #e0e7ff;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+        .action-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Essay Writing Tool: Career & SDG</h1>
+        <p style="text-align: center; color: #6b728e;">Build your essay step by step! Fill each section, check word counts, and get tips to craft a compelling essay.</p>
+
+        <h2>Introduction (75-100 words)</h2>
+        <div class="section">
+            <label>Part 1: Hook with Fact + Job/Major & Why You Like It</label>
+            <textarea id="intro-part1" oninput="updateCounter('intro-part1')" placeholder="E.g., Did you know...? My dream job is... because..."></textarea>
+            <div class="counter" id="intro-part1-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('intro-part1')">Show Tips</button>
+            <div class="suggestions" id="intro-part1-suggestions">
+                Start with a surprising fact to grab attention. Introduce your job/major and why it inspires you. Rephrase, don’t copy, your answers!
+            </div>
+        </div>
+        <div class="section">
+            <label>Part 2: Related SDG Goal</label>
+            <textarea id="intro-part2" oninput="updateCounter('intro-part2')" placeholder="E.g., This connects to SDG 3: Good Health and Well-Being."></textarea>
+            <div class="counter" id="intro-part2-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('intro-part2')">Show Tips</button>
+            <div class="suggestions" id="intro-part2-suggestions">
+                Name the SDG and explain how your job supports it. Keep it clear and concise.
+            </div>
+        </div>
+        <div class="section">
+            <label>Part 3: Problem You Care About</label>
+            <textarea id="intro-part3" oninput="updateCounter('intro-part3')" placeholder="E.g., A key issue is... tied to the fact because..."></textarea>
+            <div class="counter" id="intro-part3-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('intro-part3')">Show Tips</button>
+            <div class="suggestions" id="intro-part3-suggestions">
+                Link to your fact from Part 1. Show passion for solving this problem.
+            </div>
+        </div>
+        <div class="section">
+            <label>Part 4: Why This Job & SDG Matter</label>
+            <textarea id="intro-part4" oninput="updateCounter('intro-part4')" placeholder="E.g., This job and SDG are vital to me because..."></textarea>
+            <div class="counter" id="intro-part4-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('intro-part4')">Show Tips</button>
+            <div class="suggestions" id="intro-part4-suggestions">
+                Reflect personally. End with a strong statement to lead into the body.
+            </div>
+        </div>
+
+        <h2>Main Body (150-300 words)</h2>
+        <div class="section">
+            <label>Part 1: Known Solutions/Current Situations for SDG</label>
+            <textarea id="body-part1" oninput="updateCounter('body-part1')" placeholder="E.g., Current efforts include... based on SDG progress."></textarea>
+            <div class="counter" id="body-part1-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('body-part1')">Show Tips</button>
+            <div class="suggestions" id="body-part1-suggestions">
+                Use data or examples about SDG progress. Discuss strengths and weaknesses.
+            </div>
+        </div>
+        <div class="section">
+            <label>Part 2: Problems/Solutions Linked to Your Job</label>
+            <textarea id="body-part2" oninput="updateCounter('body-part2')" placeholder="E.g., In my job, we tackle this by..."></textarea>
+            <div class="counter" id="body-part2-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('body-part2')">Show Tips</button>
+            <div class="suggestions" id="body-part2-suggestions">
+                Connect SDG issues to your career. Provide specific examples.
+            </div>
+        </div>
+        <div class="section">
+            <label>Part 3: Critical Reflection</label>
+            <textarea id="body-part3" oninput="updateCounter('body-part3')" placeholder="E.g., Reflecting on this, I believe... showing my understanding."></textarea>
+            <div class="counter" id="body-part3-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('body-part3')">Show Tips</button>
+            <div class="suggestions" id="body-part3-suggestions">
+                Analyze critically. Show deep understanding with unique insights.
+            </div>
+        </div>
+
+        <h2>Conclusion (75-100 words)</h2>
+        <div class="section">
+            <label>Summary & Call to Action</label>
+            <textarea id="conclusion" oninput="updateCounter('conclusion')" placeholder="E.g., In summary... I predict... We must act by..."></textarea>
+            <div class="counter" id="conclusion-counter">0 words / 0 characters</div>
+            <button onclick="showSuggestions('conclusion')">Show Tips</button>
+            <div class="suggestions" id="conclusion-suggestions">
+                Summarize key points. End with a prediction or inspiring action.
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button onclick="generateEssay()">Generate Full Essay</button>
+            <button onclick="checkGrammar()">Check Grammar</button>
+        </div>
+        <div id="grammar-results" class="error"></div>
+        <div id="essay-preview"></div>
+    </div>
+
+    <script>
+        function updateCounter(id) {
+            const textarea = document.getElementById(id);
+            const counter = document.getElementById(id + '-counter');
+            const text = textarea.value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            const chars = text.length;
+            counter.textContent = `${words} words / ${chars} characters`;
+        }
+
+        function showSuggestions(id) {
+            const suggestions = document.getElementById(id + '-suggestions');
+            suggestions.style.display = suggestions.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function generateEssay() {
+            const intro = [
+                document.getElementById('intro-part1').value,
+                document.getElementById('intro-part2').value,
+                document.getElementById('intro-part3').value,
+                document.getElementById('intro-part4').value
+            ].filter(Boolean).join(' ');
+            
+            const body = [
+                document.getElementById('body-part1').value,
+                document.getElementById('body-part2').value,
+                document.getElementById('body-part3').value
+            ].filter(Boolean).join('\n\n');
+            
+            const conclusion = document.getElementById('conclusion').value;
+            
+            const fullEssay = `Introduction:\n${intro || 'Write your introduction!'}\n\nMain Body:\n${body || 'Write your main body!'}\n\nConclusion:\n${conclusion || 'Write your conclusion!'}`;
+            document.getElementById('essay-preview').textContent = fullEssay;
+        }
+
+        function checkGrammar() {
+            const sections = [
+                'intro-part1', 'intro-part2', 'intro-part3', 'intro-part4',
+                'body-part1', 'body-part2', 'body-part3', 'conclusion'
+            ];
+            let issues = [];
+            sections.forEach(id => {
+                const text = document.getElementById(id).value.trim();
+                if (text.length > 0) {
+                    // Check capitalization
+                    if (!text[0].match(/[A-Z]/)) issues.push(`${id}: Start sentences with a capital letter.`);
+                    // Check punctuation
+                    if (!text.match(/[.!?]$/)) issues.push(`${id}: End with a period, question mark, or exclamation point.`);
+                    // Check sentence length
+                    const sentences = text.split(/[.!?]/).filter(s => s.trim());
+                    sentences.forEach((s, i) => {
+                        const words = s.trim().split(/\s+/).length;
+                        if (words > 30) issues.push(`${id}: Sentence ${i + 1} is too long (${words} words)—split for clarity.`);
+                        if (words < 3 && s.trim()) issues.push(`${id}: Sentence ${i + 1} is too short—add detail.`);
+                    });
+                    // Check for repeated words
+                    const words = text.toLowerCase().split(/\s+/);
+                    for (let i = 0; i < words.length - 1; i++) {
+                        if (words[i] === words[i + 1] && words[i].length > 3) {
+                            issues.push(`${id}: Repeated word "${words[i]}"—use synonyms.`);
+                        }
+                    }
+                }
+            });
+            const results = document.getElementById('grammar-results');
+            results.innerHTML = issues.length > 0 ? issues.join('<br>') : 'No basic issues found! For deeper checks, use a browser-based grammar tool.';
+        }
+    </script>
+</body>
+</html>
