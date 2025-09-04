@@ -10,23 +10,23 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%);
             margin: 0;
             padding: 20px;
             min-height: 100vh;
-            color: #2d3748;
+            color: #1e3a8a;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(248, 250, 252, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         .header {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
             color: white;
             padding: 30px;
             text-align: center;
@@ -44,7 +44,7 @@
             padding: 30px;
         }
         h2 {
-            color: #4f46e5;
+            color: #1e40af;
             font-size: 1.6em;
             margin: 30px 0 20px 0;
             display: flex;
@@ -53,8 +53,8 @@
             font-weight: 600;
         }
         .section {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
+            background: #f0f9ff;
+            border: 2px solid #bfdbfe;
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
@@ -62,12 +62,12 @@
             position: relative;
         }
         .section:hover {
-            border-color: #4f46e5;
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.1);
+            border-color: #38bdf8;
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.1);
         }
         label {
             font-weight: 600;
-            color: #374151;
+            color: #1e3a8a;
             display: block;
             margin-bottom: 12px;
             font-size: 1.1em;
@@ -76,7 +76,7 @@
             width: 100%;
             min-height: 120px;
             padding: 15px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #bfdbfe;
             border-radius: 12px;
             resize: vertical;
             font-size: 1em;
@@ -86,9 +86,9 @@
             line-height: 1.6;
         }
         textarea:focus {
-            border-color: #4f46e5;
+            border-color: #38bdf8;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
         }
         .textarea-wrapper {
             position: relative;
@@ -97,7 +97,7 @@
             position: absolute;
             bottom: 10px;
             right: 15px;
-            background: rgba(79, 70, 229, 0.9);
+            background: rgba(56, 189, 248, 0.9);
             color: white;
             padding: 4px 8px;
             border-radius: 12px;
@@ -112,7 +112,7 @@
         }
         button {
             padding: 10px 20px;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
             color: white;
             border: none;
             border-radius: 25px;
@@ -125,7 +125,7 @@
         }
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
         }
         button:active {
             transform: translateY(0);
@@ -136,9 +136,9 @@
         .suggestions {
             margin-top: 15px;
             padding: 15px;
-            background: linear-gradient(135deg, #ddd6fe, #e0e7ff);
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
             border-radius: 12px;
-            border-left: 4px solid #4f46e5;
+            border-left: 4px solid #38bdf8;
             animation: slideDown 0.3s ease;
         }
         @keyframes slideDown {
@@ -157,8 +157,8 @@
             animation: fadeIn 0.3s ease;
         }
         .grammar-results.success {
-            background: #f0fdf4;
-            border-color: #bbf7d0;
+            background: #ecfdf5;
+            border-color: #6ee7b7;
         }
         .grammar-issue {
             margin: 10px 0;
@@ -176,12 +176,12 @@
         #essay-preview {
             margin-top: 30px;
             padding: 25px;
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             border-radius: 15px;
             white-space: pre-wrap;
             line-height: 1.8;
             font-size: 1.05em;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #bfdbfe;
             display: none;
         }
         .action-buttons {
@@ -213,14 +213,14 @@
         }
         .progress-bar {
             height: 4px;
-            background: #e5e7eb;
+            background: #bfdbfe;
             border-radius: 2px;
             overflow: hidden;
             margin: 20px 0;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9);
             width: 0%;
             transition: width 0.3s ease;
             border-radius: 2px;
@@ -235,13 +235,13 @@
             background: white;
             padding: 15px;
             border-radius: 12px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #bfdbfe;
             text-align: center;
         }
         .stat-number {
             font-size: 2em;
             font-weight: 700;
-            color: #4f46e5;
+            color: #1e40af;
         }
         .stat-label {
             font-size: 0.9em;
@@ -465,9 +465,8 @@
     </div>
 
     <script>
-        // Enhanced grammar rules and common mistakes
+        // Grammar rules without capitalization check
         const grammarRules = {
-            capitalization: /^\s*[a-z]/, // Check for lowercase start after whitespace
             endPunctuation: /[.!?]$/,
             commonMistakes: [
                 { pattern: /\b(there|their|they're)\b/gi, type: 'there/their/they\'re confusion' },
@@ -515,21 +514,11 @@
             };
         }
 
-        // Enhanced grammar checking function
+        // Grammar checking function without capitalization
         function performGrammarCheck(text, sectionName) {
             const issues = [];
             const trimmedText = text.trim();
             if (!trimmedText) return issues;
-
-            // Capitalization check
-            const firstNonWhitespace = trimmedText.replace(/^\s*/, '');
-            if (firstNonWhitespace && grammarRules.capitalization.test(firstNonWhitespace)) {
-                issues.push({
-                    type: 'capitalization',
-                    message: `${sectionName}: The first sentence must start with a capital letter.`,
-                    severity: 'error'
-                });
-            }
 
             // End punctuation check
             if (!grammarRules.endPunctuation.test(trimmedText)) {
@@ -882,31 +871,3 @@ ${readability.readabilityScore === 'Complex' ? '💡 Tip: Consider breaking up s
                 tipIndex++;
             }, 10000);
             document.addEventListener('keydown', function(e) {
-                if (e.ctrlKey || e.metaKey) {
-                    switch(e.key) {
-                        case 's':
-                            e.preventDefault();
-                            exportEssay();
-                            break;
-                        case 'g':
-                            e.preventDefault();
-                            comprehensiveGrammarCheck();
-                            break;
-                        case 'Enter':
-                            if (e.shiftKey) {
-                                e.preventDefault();
-                                generateEssay();
-                            }
-                            break;
-                    }
-                }
-            });
-            console.log('🚀 Enhanced Essay Tool Loaded Successfully!');
-            console.log('💡 Keyboard Shortcuts:');
-            console.log('   Ctrl+S: Export essay');
-            console.log('   Ctrl+G: Grammar check');
-            console.log('   Ctrl+Shift+Enter: Generate essay');
-        });
-    </script>
-</body>
-</html>
