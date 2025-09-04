@@ -8,7 +8,6 @@
         * {
             box-sizing: border-box;
         }
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -17,7 +16,6 @@
             min-height: 100vh;
             color: #2d3748;
         }
-        
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -27,29 +25,24 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        
         .header {
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
             color: white;
             padding: 30px;
             text-align: center;
         }
-        
         h1 {
             margin: 0 0 10px 0;
             font-size: 2.5em;
             font-weight: 700;
         }
-        
         .subtitle {
             opacity: 0.9;
             font-size: 1.1em;
         }
-        
         .content {
             padding: 30px;
         }
-        
         h2 {
             color: #4f46e5;
             font-size: 1.6em;
@@ -59,7 +52,6 @@
             gap: 10px;
             font-weight: 600;
         }
-        
         .section {
             background: #f8fafc;
             border: 2px solid #e2e8f0;
@@ -69,12 +61,10 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
         .section:hover {
             border-color: #4f46e5;
             box-shadow: 0 5px 15px rgba(79, 70, 229, 0.1);
         }
-        
         label {
             font-weight: 600;
             color: #374151;
@@ -82,7 +72,6 @@
             margin-bottom: 12px;
             font-size: 1.1em;
         }
-        
         textarea {
             width: 100%;
             min-height: 120px;
@@ -96,17 +85,14 @@
             transition: all 0.3s ease;
             line-height: 1.6;
         }
-        
         textarea:focus {
             border-color: #4f46e5;
             outline: none;
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
-        
         .textarea-wrapper {
             position: relative;
         }
-        
         .word-counter {
             position: absolute;
             bottom: 10px;
@@ -118,14 +104,12 @@
             font-size: 0.8em;
             font-weight: 500;
         }
-        
         .button-group {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
             margin-top: 15px;
         }
-        
         button {
             padding: 10px 20px;
             background: linear-gradient(135deg, #4f46e5, #7c3aed);
@@ -139,35 +123,28 @@
             position: relative;
             overflow: hidden;
         }
-        
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
         }
-        
         button:active {
             transform: translateY(0);
         }
-        
         button.secondary {
             background: linear-gradient(135deg, #6b7280, #9ca3af);
         }
-        
         .suggestions {
             margin-top: 15px;
             padding: 15px;
             background: linear-gradient(135deg, #ddd6fe, #e0e7ff);
             border-radius: 12px;
-            display: none;
             border-left: 4px solid #4f46e5;
             animation: slideDown 0.3s ease;
         }
-        
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         .grammar-results {
             margin-top: 20px;
             padding: 20px;
@@ -177,13 +154,12 @@
             display: none;
             max-height: 300px;
             overflow-y: auto;
+            animation: fadeIn 0.3s ease;
         }
-        
         .grammar-results.success {
             background: #f0fdf4;
             border-color: #bbf7d0;
         }
-        
         .grammar-issue {
             margin: 10px 0;
             padding: 10px;
@@ -191,15 +167,12 @@
             border-radius: 8px;
             border-left: 4px solid #ef4444;
         }
-        
         .grammar-issue.suggestion {
             border-left-color: #f59e0b;
         }
-        
         .grammar-issue.success {
             border-left-color: #10b981;
         }
-        
         #essay-preview {
             margin-top: 30px;
             padding: 25px;
@@ -211,7 +184,6 @@
             border: 2px solid #e5e7eb;
             display: none;
         }
-        
         .action-buttons {
             text-align: center;
             margin: 30px 0;
@@ -220,11 +192,9 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-        
         .loading {
             position: relative;
         }
-        
         .loading::after {
             content: '';
             position: absolute;
@@ -238,11 +208,9 @@
             border-top-color: white;
             animation: spin 1s linear infinite;
         }
-        
         @keyframes spin {
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
-        
         .progress-bar {
             height: 4px;
             background: #e5e7eb;
@@ -250,7 +218,6 @@
             overflow: hidden;
             margin: 20px 0;
         }
-        
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #4f46e5, #7c3aed);
@@ -258,14 +225,12 @@
             transition: width 0.3s ease;
             border-radius: 2px;
         }
-        
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
-        
         .stat-card {
             background: white;
             padding: 15px;
@@ -273,37 +238,35 @@
             border: 2px solid #e5e7eb;
             text-align: center;
         }
-        
         .stat-number {
             font-size: 2em;
             font-weight: 700;
             color: #4f46e5;
         }
-        
         .stat-label {
             font-size: 0.9em;
             color: #6b7280;
             margin-top: 5px;
         }
-        
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
                 border-radius: 15px;
             }
-            
             .content {
                 padding: 20px;
             }
-            
             .action-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
             button {
                 width: 100%;
                 max-width: 300px;
+            }
+            .word-counter {
+                font-size: 0.75em;
+                padding: 3px 6px;
             }
         }
     </style>
@@ -504,11 +467,8 @@
     <script>
         // Enhanced grammar rules and common mistakes
         const grammarRules = {
-            // Basic punctuation and capitalization
-            capitalization: /^[a-z]/,
+            capitalization: /^\s*[a-z]/, // Check for lowercase start after whitespace
             endPunctuation: /[.!?]$/,
-            
-            // Common mistakes
             commonMistakes: [
                 { pattern: /\b(there|their|they're)\b/gi, type: 'there/their/they\'re confusion' },
                 { pattern: /\b(your|you're)\b/gi, type: 'your/you\'re confusion' },
@@ -517,20 +477,16 @@
                 { pattern: /\b(affect|effect)\b/gi, type: 'affect/effect confusion' },
                 { pattern: /\b(loose|lose)\b/gi, type: 'loose/lose confusion' }
             ],
-            
-            // Style issues
             passiveVoice: /\b(was|were|is|are|am|be|being|been)\s+\w+ed\b/g,
             redundantPhrases: [
                 'in order to', 'due to the fact that', 'at this point in time',
                 'it is important to note that', 'the reason why is because'
             ],
-            
-            // Academic writing issues
             contractions: /\b(can't|won't|don't|isn't|aren't|hasn't|haven't|shouldn't|wouldn't|couldn't)\b/gi,
             informalWords: /\b(really|very|pretty|quite|sort of|kind of|a lot|lots of)\b/gi,
             firstPerson: /\b(I think|I believe|I feel|In my opinion)\b/gi
         };
-        
+
         // Word frequency analysis for repetition detection
         function analyzeWordFrequency(text) {
             const words = text.toLowerCase().match(/\b\w{4,}\b/g) || [];
@@ -540,19 +496,17 @@
             });
             return Object.entries(frequency).filter(([word, count]) => count > 2);
         }
-        
+
         // Readability analysis
         function analyzeReadability(text) {
             const sentences = text.split(/[.!?]+/).filter(s => s.trim());
             const words = text.split(/\s+/).filter(w => w.trim());
             const avgWordsPerSentence = words.length / sentences.length || 0;
-            
             let complexSentences = 0;
             sentences.forEach(sentence => {
-                const wordCount = sentence.split(/\s+/).length;
+                const wordCount = sentence.trim().split(/\s+/).length;
                 if (wordCount > 25) complexSentences++;
             });
-            
             return {
                 avgWordsPerSentence,
                 complexSentences,
@@ -560,32 +514,34 @@
                 readabilityScore: avgWordsPerSentence < 20 ? 'Good' : avgWordsPerSentence < 25 ? 'Fair' : 'Complex'
             };
         }
-        
+
         // Enhanced grammar checking function
         function performGrammarCheck(text, sectionName) {
             const issues = [];
-            
-            if (!text.trim()) return issues;
-            
-            // Basic checks
-            if (!grammarRules.capitalization.test(text.trim())) {
+            const trimmedText = text.trim();
+            if (!trimmedText) return issues;
+
+            // Capitalization check
+            const firstNonWhitespace = trimmedText.replace(/^\s*/, '');
+            if (firstNonWhitespace && grammarRules.capitalization.test(firstNonWhitespace)) {
                 issues.push({
                     type: 'capitalization',
-                    message: `${sectionName}: Start with a capital letter`,
+                    message: `${sectionName}: The first sentence must start with a capital letter.`,
                     severity: 'error'
                 });
             }
-            
-            if (!grammarRules.endPunctuation.test(text.trim())) {
+
+            // End punctuation check
+            if (!grammarRules.endPunctuation.test(trimmedText)) {
                 issues.push({
                     type: 'punctuation',
-                    message: `${sectionName}: End with proper punctuation (. ! ?)`,
+                    message: `${sectionName}: End with proper punctuation (. ! ?).`,
                     severity: 'error'
                 });
             }
-            
+
             // Sentence length analysis
-            const sentences = text.split(/[.!?]+/).filter(s => s.trim());
+            const sentences = trimmedText.split(/[.!?]+/).filter(s => s.trim());
             sentences.forEach((sentence, i) => {
                 const words = sentence.trim().split(/\s+/);
                 if (words.length > 30) {
@@ -602,9 +558,9 @@
                     });
                 }
             });
-            
+
             // Word repetition
-            const repeatedWords = analyzeWordFrequency(text);
+            const repeatedWords = analyzeWordFrequency(trimmedText);
             repeatedWords.forEach(([word, count]) => {
                 issues.push({
                     type: 'repetition',
@@ -612,28 +568,27 @@
                     severity: 'suggestion'
                 });
             });
-            
+
             // Style issues
-            const contractionMatches = text.match(grammarRules.contractions);
+            const contractionMatches = trimmedText.match(grammarRules.contractions);
             if (contractionMatches) {
                 issues.push({
                     type: 'style',
-                    message: `${sectionName}: Avoid contractions in formal writing: ${contractionMatches.join(', ')}`,
+                    message: `${sectionName}: Avoid contractions in formal writing: ${contractionMatches.join(', ')}.`,
                     severity: 'warning'
                 });
             }
-            
-            const informalMatches = text.match(grammarRules.informalWords);
+
+            const informalMatches = trimmedText.match(grammarRules.informalWords);
             if (informalMatches) {
                 issues.push({
                     type: 'style',
-                    message: `${sectionName}: Consider replacing informal words: ${[...new Set(informalMatches)].join(', ')}`,
+                    message: `${sectionName}: Consider replacing informal words: ${[...new Set(informalMatches)].join(', ')}.`,
                     severity: 'suggestion'
                 });
             }
-            
-            // Passive voice detection
-            const passiveMatches = text.match(grammarRules.passiveVoice);
+
+            const passiveMatches = trimmedText.match(grammarRules.passiveVoice);
             if (passiveMatches && passiveMatches.length > 2) {
                 issues.push({
                     type: 'voice',
@@ -641,68 +596,85 @@
                     severity: 'suggestion'
                 });
             }
-            
+
             return issues;
         }
-        
+
         // Update word counters and statistics
         function updateCounters() {
             const sections = [
                 'intro-part1', 'intro-part2', 'intro-part3', 'intro-part4',
                 'body-part1', 'body-part2', 'body-part3', 'conclusion'
             ];
-            
             let totalWords = 0;
             let filledSections = 0;
-            
+
             sections.forEach(sectionId => {
                 const textarea = document.getElementById(sectionId);
                 const counter = document.getElementById(`${sectionId}-counter`);
                 const text = textarea.value.trim();
                 const words = text ? text.split(/\s+/).length : 0;
-                
                 counter.textContent = `${words} words`;
                 totalWords += words;
-                
                 if (words > 0) filledSections++;
             });
-            
-            // Update statistics
+
             document.getElementById('total-words').textContent = totalWords;
             const completionRate = Math.round((filledSections / sections.length) * 100);
             document.getElementById('completion-rate').textContent = `${completionRate}%`;
-            
-            // Update progress bar
             document.getElementById('progress-fill').style.width = `${completionRate}%`;
         }
-        
+
         function showSuggestions(sectionId) {
             const suggestions = document.getElementById(`${sectionId}-suggestions`);
             const isVisible = suggestions.style.display === 'block';
             suggestions.style.display = isVisible ? 'none' : 'block';
         }
-        
+
         function checkSectionGrammar(sectionId) {
             const textarea = document.getElementById(sectionId);
             const text = textarea.value.trim();
             const sectionName = textarea.previousElementSibling.textContent;
-            
             if (!text) {
                 alert('Please write something in this section first!');
                 return;
             }
-            
-            const issues = performGrammarCheck(text, sectionName);
-            displayGrammarResults(issues, sectionName);
+            const button = textarea.nextElementSibling.nextElementSibling.querySelector('.secondary');
+            const originalText = button.textContent;
+            button.textContent = 'Checking...';
+            button.classList.add('loading');
+            button.disabled = true;
+
+            performGrammarCheckAsync(text, sectionName).then(issues => {
+                button.textContent = originalText;
+                button.classList.remove('loading');
+                button.disabled = false;
+                displayGrammarResults(issues, sectionName);
+            });
         }
-        
+
+        async function performGrammarCheckAsync(text, sectionName) {
+            let issues = performGrammarCheck(text, sectionName);
+            try {
+                const apiIssues = await checkWithLanguageTool(text, sectionName);
+                issues = issues.concat(apiIssues);
+            } catch (error) {
+                issues.push({
+                    type: 'api-error',
+                    message: `${sectionName}: LanguageTool API unavailable (rate limit or network issue). Try again in 60 seconds or self-host at https://github.com/languagetool-org/languagetool.`,
+                    severity: 'warning'
+                });
+            }
+            return issues;
+        }
+
         async function comprehensiveGrammarCheck() {
             const button = document.getElementById('grammar-btn');
             const originalText = button.textContent;
             button.textContent = 'Checking...';
             button.classList.add('loading');
             button.disabled = true;
-            
+
             const sections = [
                 { id: 'intro-part1', name: 'Introduction - Hook & Job' },
                 { id: 'intro-part2', name: 'Introduction - SDG' },
@@ -713,40 +685,31 @@
                 { id: 'body-part3', name: 'Body - Critical Reflection' },
                 { id: 'conclusion', name: 'Conclusion' }
             ];
-            
+
             let allIssues = [];
             let totalWords = 0;
             let errorCount = 0;
-            
+
             for (const section of sections) {
                 const text = document.getElementById(section.id).value.trim();
                 if (text) {
-                    const issues = performGrammarCheck(text, section.name);
+                    const issues = await performGrammarCheckAsync(text, section.name);
                     allIssues = allIssues.concat(issues);
                     totalWords += text.split(/\s+/).length;
                     errorCount += issues.filter(i => i.severity === 'error').length;
-                    
-                    // Try LanguageTool API as backup
-                    try {
-                        const apiIssues = await checkWithLanguageTool(text, section.name);
-                        allIssues = allIssues.concat(apiIssues);
-                    } catch (error) {
-                        console.log('LanguageTool API unavailable, using local checks only');
-                    }
                 }
             }
-            
-            // Calculate grammar score
+
             const grammarScore = totalWords > 0 ? Math.max(0, 100 - (errorCount * 10)) : 0;
             document.getElementById('grammar-score').textContent = `${grammarScore}/100`;
-            
+
             button.textContent = originalText;
             button.classList.remove('loading');
             button.disabled = false;
-            
+
             displayGrammarResults(allIssues, 'Comprehensive Check');
         }
-        
+
         async function checkWithLanguageTool(text, sectionName) {
             const issues = [];
             try {
@@ -758,30 +721,29 @@
                         language: 'en-US'
                     })
                 });
-                
                 if (response.ok) {
                     const data = await response.json();
                     data.matches.forEach(match => {
                         const suggestion = match.replacements.length > 0 
                             ? match.replacements[0].value
                             : 'No suggestion available';
-                        
                         issues.push({
                             type: 'api-check',
                             message: `${sectionName}: ${match.message} → Suggested: "${suggestion}"`,
                             severity: match.rule.category.id === 'TYPOS' ? 'error' : 'warning'
                         });
                     });
+                } else {
+                    throw new Error('API request failed');
                 }
             } catch (error) {
-                // Fail silently - local checks will still work
+                console.log('LanguageTool API error:', error);
             }
             return issues;
         }
-        
+
         function displayGrammarResults(issues, checkType) {
             const resultsDiv = document.getElementById('grammar-results');
-            
             if (issues.length === 0) {
                 resultsDiv.innerHTML = `
                     <div class="grammar-issue success">
@@ -794,30 +756,26 @@
                 const errorCount = issues.filter(i => i.severity === 'error').length;
                 const warningCount = issues.filter(i => i.severity === 'warning').length;
                 const suggestionCount = issues.filter(i => i.severity === 'suggestion').length;
-                
                 let html = `
                     <h3>📋 ${checkType} Results</h3>
                     <p><strong>Found:</strong> ${errorCount} errors, ${warningCount} warnings, ${suggestionCount} suggestions</p>
                 `;
-                
                 issues.forEach(issue => {
                     const icon = issue.severity === 'error' ? '❌' : 
-                                issue.severity === 'warning' ? '⚠️' : '💡';
+                                 issue.severity === 'warning' ? '⚠️' : '💡';
                     html += `
                         <div class="grammar-issue ${issue.severity}">
                             ${icon} <strong>${issue.type.toUpperCase()}:</strong> ${issue.message}
                         </div>
                     `;
                 });
-                
                 resultsDiv.innerHTML = html;
                 resultsDiv.className = 'grammar-results';
             }
-            
             resultsDiv.style.display = 'block';
             resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-        
+
         function generateEssay() {
             const sections = [
                 { id: 'intro-part1', label: '' },
@@ -825,54 +783,41 @@
                 { id: 'intro-part3', label: '' },
                 { id: 'intro-part4', label: '' }
             ];
-            
             const bodySection = [
                 { id: 'body-part1', label: '' },
                 { id: 'body-part2', label: '' },
                 { id: 'body-part3', label: '' }
             ];
-            
             const conclusion = document.getElementById('conclusion').value.trim();
-            
-            // Combine introduction parts
             const intro = sections
                 .map(s => document.getElementById(s.id).value.trim())
                 .filter(text => text)
                 .join(' ');
-            
-            // Combine body parts
             const body = bodySection
                 .map(s => document.getElementById(s.id).value.trim())
                 .filter(text => text)
                 .join('\n\n');
-            
-            // Generate full essay
             let fullEssay = '';
-            
             if (intro) {
                 fullEssay += `INTRODUCTION\n\n${intro}\n\n`;
             } else {
                 fullEssay += `INTRODUCTION\n\n[Please complete the introduction sections above]\n\n`;
             }
-            
             if (body) {
                 fullEssay += `MAIN BODY\n\n${body}\n\n`;
             } else {
                 fullEssay += `MAIN BODY\n\n[Please complete the body sections above]\n\n`;
             }
-            
             if (conclusion) {
                 fullEssay += `CONCLUSION\n\n${conclusion}`;
             } else {
                 fullEssay += `CONCLUSION\n\n[Please complete the conclusion section above]`;
             }
-            
             const previewDiv = document.getElementById('essay-preview');
             previewDiv.textContent = fullEssay;
             previewDiv.style.display = 'block';
             previewDiv.scrollIntoView({ behavior: 'smooth' });
-            
-            // Analyze the complete essay
+
             const totalText = intro + ' ' + body + ' ' + conclusion;
             if (totalText.trim()) {
                 const readability = analyzeReadability(totalText);
@@ -882,20 +827,17 @@
 • Average words per sentence: ${Math.round(readability.avgWordsPerSentence)}
 • Readability: ${readability.readabilityScore}
 • Complex sentences: ${readability.complexSentences}/${readability.totalSentences}
-                    
 ${readability.readabilityScore === 'Complex' ? '💡 Tip: Consider breaking up some longer sentences for better readability.' : '✅ Good readability balance!'}`);
                 }, 500);
             }
         }
-        
+
         function exportEssay() {
             const essayText = document.getElementById('essay-preview').textContent;
             if (!essayText || essayText.includes('[Please complete')) {
                 alert('Please generate your full essay first!');
                 return;
             }
-            
-            // Create downloadable file
             const blob = new Blob([essayText], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -906,10 +848,25 @@ ${readability.readabilityScore === 'Complex' ? '💡 Tip: Consider breaking up s
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
-        
-        // Advanced writing suggestions
-        function getWritingTips() {
-            return [
+
+        // Auto-save functionality (logged to console for GitHub Pages)
+        function autoSave() {
+            const sections = [
+                'intro-part1', 'intro-part2', 'intro-part3', 'intro-part4',
+                'body-part1', 'body-part2', 'body-part3', 'conclusion'
+            ];
+            const data = {};
+            sections.forEach(id => {
+                data[id] = document.getElementById(id).value;
+            });
+            console.log('Auto-saved essay data:', data);
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCounters();
+            setInterval(autoSave, 30000);
+            const tips = [
                 "Use the STAR method: Situation, Task, Action, Result when giving examples",
                 "Connect personal experiences to larger societal issues",
                 "Use transition words: Furthermore, Additionally, However, Consequently",
@@ -919,56 +876,23 @@ ${readability.readabilityScore === 'Complex' ? '💡 Tip: Consider breaking up s
                 "End paragraphs with strong, forward-looking statements",
                 "Use parallel structure: 'I aim to educate, innovate, and inspire'"
             ];
-        }
-        
-        // Auto-save functionality
-        function autoSave() {
-            const sections = [
-                'intro-part1', 'intro-part2', 'intro-part3', 'intro-part4',
-                'body-part1', 'body-part2', 'body-part3', 'conclusion'
-            ];
-            
-            const data = {};
-            sections.forEach(id => {
-                data[id] = document.getElementById(id).value;
-            });
-            
-            // Note: localStorage not available in Claude artifacts, but this would work in real deployment
-            console.log('Auto-saved essay data:', data);
-        }
-        
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initial counter update
-            updateCounters();
-            
-            // Set up auto-save (every 30 seconds)
-            setInterval(autoSave, 30000);
-            
-            // Add helpful tooltips
-            const tips = getWritingTips();
             let tipIndex = 0;
-            
-            // Rotate tips every 10 seconds
             setInterval(() => {
-                const randomTip = tips[tipIndex % tips.length];
-                document.title = `💡 Tip: ${randomTip}`;
+                document.title = `💡 Tip: ${tips[tipIndex % tips.length]}`;
                 tipIndex++;
             }, 10000);
-            
-            // Add keyboard shortcuts
             document.addEventListener('keydown', function(e) {
                 if (e.ctrlKey || e.metaKey) {
                     switch(e.key) {
-                        case 's': // Save/Export
+                        case 's':
                             e.preventDefault();
                             exportEssay();
                             break;
-                        case 'g': // Grammar check
+                        case 'g':
                             e.preventDefault();
                             comprehensiveGrammarCheck();
                             break;
-                        case 'Enter': // Generate essay
+                        case 'Enter':
                             if (e.shiftKey) {
                                 e.preventDefault();
                                 generateEssay();
@@ -977,47 +901,12 @@ ${readability.readabilityScore === 'Complex' ? '💡 Tip: Consider breaking up s
                     }
                 }
             });
+            console.log('🚀 Enhanced Essay Tool Loaded Successfully!');
+            console.log('💡 Keyboard Shortcuts:');
+            console.log('   Ctrl+S: Export essay');
+            console.log('   Ctrl+G: Grammar check');
+            console.log('   Ctrl+Shift+Enter: Generate essay');
         });
-        
-        // Word suggestion engine
-        const synonymSuggestions = {
-            'important': ['crucial', 'vital', 'essential', 'significant', 'critical'],
-            'big': ['substantial', 'considerable', 'extensive', 'major', 'significant'],
-            'good': ['beneficial', 'positive', 'effective', 'valuable', 'advantageous'],
-            'bad': ['detrimental', 'negative', 'harmful', 'problematic', 'adverse'],
-            'help': ['assist', 'support', 'aid', 'facilitate', 'contribute to'],
-            'make': ['create', 'develop', 'establish', 'generate', 'produce'],
-            'show': ['demonstrate', 'illustrate', 'reveal', 'indicate', 'display']
-        };
-        
-        // Enhanced spell check (basic implementation)
-        function basicSpellCheck(text) {
-            const commonMisspellings = {
-                'recieve': 'receive',
-                'seperate': 'separate', 
-                'definately': 'definitely',
-                'occured': 'occurred',
-                'begining': 'beginning',
-                'acheive': 'achieve',
-                'beleive': 'believe',
-                'necesary': 'necessary'
-            };
-            
-            const suggestions = [];
-            Object.keys(commonMisspellings).forEach(wrong => {
-                if (text.toLowerCase().includes(wrong)) {
-                    suggestions.push(`Possible misspelling: "${wrong}" → "${commonMisspellings[wrong]}"`);
-                }
-            });
-            
-            return suggestions;
-        }
-        
-        console.log('🚀 Enhanced Essay Tool Loaded Successfully!');
-        console.log('💡 Keyboard Shortcuts:');
-        console.log('   Ctrl+S: Export essay');
-        console.log('   Ctrl+G: Grammar check');
-        console.log('   Ctrl+Shift+Enter: Generate essay');
     </script>
 </body>
 </html>
