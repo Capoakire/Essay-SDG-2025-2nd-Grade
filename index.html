@@ -615,7 +615,7 @@
             document.getElementById('progress-fill').style.width = `${completionRate}%`;
         }
 
-        // Fix: Toggle suggestions visibility
+        // Toggle suggestions visibility
         function showSuggestions(sectionId) {
             const suggestions = document.getElementById(`${sectionId}-suggestions`);
             const button = document.getElementById(`tips-${sectionId}`);
@@ -624,7 +624,7 @@
             button.textContent = isVisible ? '💡 Show Tips' : '💡 Hide Tips';
         }
 
-        // Fix: Grammar check for a single section
+        // Fixed: Grammar check for a single section
         function checkSectionGrammar(sectionId) {
             const textarea = document.getElementById(sectionId);
             const text = textarea.value.trim();
@@ -633,7 +633,7 @@
                 alert('Please write something in this section first!');
                 return;
             }
-            const button = document.querySelector(`#${sectionId} ~ .button-group .secondary`);
+            const button = document.getElementById(sectionId).closest('.section').querySelector('.secondary');
             const originalText = button.textContent;
             button.textContent = 'Checking...';
             button.classList.add('loading');
@@ -641,7 +641,7 @@
 
             console.log(`Checking grammar for ${sectionName}`);
 
-            // Run local checks first
+            // Run local checks
             let issues = performGrammarCheck(text, sectionName);
 
             // Attempt LanguageTool API check
@@ -651,7 +651,7 @@
                 button.classList.remove('loading');
                 button.disabled = false;
                 displayGrammarResults(issues, sectionName);
-                console.log(`Grammar check complete for ${sectionName}: ${issues.length} issues found`);
+                console.log(`Quick Check complete for ${sectionName}: ${issues.length} issues found`);
             }).catch(error => {
                 issues.push({
                     type: 'api-error',
@@ -662,7 +662,7 @@
                 button.classList.remove('loading');
                 button.disabled = false;
                 displayGrammarResults(issues, sectionName);
-                console.log(`Grammar check failed for ${sectionName}: ${error.message}`);
+                console.log(`Quick Check error for ${sectionName}: ${error.message}`);
             });
         }
 
