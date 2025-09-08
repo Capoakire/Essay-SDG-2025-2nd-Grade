@@ -139,9 +139,10 @@
             background: linear-gradient(135deg, #e0f2fe, #bae6fd);
             border-radius: 12px;
             border-left: 4px solid #3b82f6;
-            animation: slideDown 0.3s ease;
+            animation: fadeIn 0.3s ease;
+            display: block;
         }
-        @keyframes slideDown {
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -306,7 +307,7 @@
                     <div class="word-counter" id="intro-part1-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('intro-part1')">💡 Show Tips</button>
+                    <button id="tips-intro-part1" onclick="showSuggestions('intro-part1')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('intro-part1')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="intro-part1-suggestions">
@@ -325,7 +326,7 @@
                     <div class="word-counter" id="intro-part2-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('intro-part2')">💡 Show Tips</button>
+                    <button id="tips-intro-part2" onclick="showSuggestions('intro-part2')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('intro-part2')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="intro-part2-suggestions">
@@ -344,7 +345,7 @@
                     <div class="word-counter" id="intro-part3-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('intro-part3')">💡 Show Tips</button>
+                    <button id="tips-intro-part3" onclick="showSuggestions('intro-part3')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('intro-part3')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="intro-part3-suggestions">
@@ -363,7 +364,7 @@
                     <div class="word-counter" id="intro-part4-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('intro-part4')">💡 Show Tips</button>
+                    <button id="tips-intro-part4" onclick="showSuggestions('intro-part4')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('intro-part4')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="intro-part4-suggestions">
@@ -383,7 +384,7 @@
                     <div class="word-counter" id="body-part1-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('body-part1')">💡 Show Tips</button>
+                    <button id="tips-body-part1" onclick="showSuggestions('body-part1')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('body-part1')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="body-part1-suggestions">
@@ -402,7 +403,7 @@
                     <div class="word-counter" id="body-part2-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('body-part2')">💡 Show Tips</button>
+                    <button id="tips-body-part2" onclick="showSuggestions('body-part2')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('body-part2')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="body-part2-suggestions">
@@ -421,7 +422,7 @@
                     <div class="word-counter" id="body-part3-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('body-part3')">💡 Show Tips</button>
+                    <button id="tips-body-part3" onclick="showSuggestions('body-part3')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('body-part3')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="body-part3-suggestions">
@@ -441,7 +442,7 @@
                     <div class="word-counter" id="conclusion-counter">0 words</div>
                 </div>
                 <div class="button-group">
-                    <button onclick="showSuggestions('conclusion')">💡 Show Tips</button>
+                    <button id="tips-conclusion" onclick="showSuggestions('conclusion')">💡 Show Tips</button>
                     <button class="secondary" onclick="checkSectionGrammar('conclusion')">✅ Quick Check</button>
                 </div>
                 <div class="suggestions" id="conclusion-suggestions">
@@ -465,7 +466,7 @@
     </div>
 
     <script>
-        // Grammar rules without capitalization check
+        // Grammar rules (no capitalization check)
         const grammarRules = {
             endPunctuation: /[.!?]$/,
             commonMistakes: [
@@ -514,7 +515,7 @@
             };
         }
 
-        // Enhanced grammar checking function
+        // Grammar checking function
         function performGrammarCheck(text, sectionName) {
             const issues = [];
             const trimmedText = text.trim();
@@ -614,12 +615,16 @@
             document.getElementById('progress-fill').style.width = `${completionRate}%`;
         }
 
+        // Fix: Toggle suggestions visibility
         function showSuggestions(sectionId) {
             const suggestions = document.getElementById(`${sectionId}-suggestions`);
+            const button = document.getElementById(`tips-${sectionId}`);
             const isVisible = suggestions.style.display === 'block';
             suggestions.style.display = isVisible ? 'none' : 'block';
+            button.textContent = isVisible ? '💡 Show Tips' : '💡 Hide Tips';
         }
 
+        // Fix: Grammar check for a single section
         function checkSectionGrammar(sectionId) {
             const textarea = document.getElementById(sectionId);
             const text = textarea.value.trim();
@@ -628,35 +633,40 @@
                 alert('Please write something in this section first!');
                 return;
             }
-            const button = textarea.nextElementSibling.nextElementSibling.querySelector('.secondary');
+            const button = document.querySelector(`#${sectionId} ~ .button-group .secondary`);
             const originalText = button.textContent;
             button.textContent = 'Checking...';
             button.classList.add('loading');
             button.disabled = true;
 
-            performGrammarCheckAsync(text, sectionName).then(issues => {
+            console.log(`Checking grammar for ${sectionName}`);
+
+            // Run local checks first
+            let issues = performGrammarCheck(text, sectionName);
+
+            // Attempt LanguageTool API check
+            checkWithLanguageTool(text, sectionName).then(apiIssues => {
+                issues = issues.concat(apiIssues);
                 button.textContent = originalText;
                 button.classList.remove('loading');
                 button.disabled = false;
                 displayGrammarResults(issues, sectionName);
-            });
-        }
-
-        async function performGrammarCheckAsync(text, sectionName) {
-            let issues = performGrammarCheck(text, sectionName);
-            try {
-                const apiIssues = await checkWithLanguageTool(text, sectionName);
-                issues = issues.concat(apiIssues);
-            } catch (error) {
+                console.log(`Grammar check complete for ${sectionName}: ${issues.length} issues found`);
+            }).catch(error => {
                 issues.push({
                     type: 'api-error',
                     message: `${sectionName}: LanguageTool API unavailable (rate limit or network issue). Try again in 60 seconds or self-host at https://github.com/languagetool-org/languagetool.`,
                     severity: 'warning'
                 });
-            }
-            return issues;
+                button.textContent = originalText;
+                button.classList.remove('loading');
+                button.disabled = false;
+                displayGrammarResults(issues, sectionName);
+                console.log(`Grammar check failed for ${sectionName}: ${error.message}`);
+            });
         }
 
+        // Comprehensive grammar check for all sections
         async function comprehensiveGrammarCheck() {
             const button = document.getElementById('grammar-btn');
             const originalText = button.textContent;
@@ -682,7 +692,19 @@
             for (const section of sections) {
                 const text = document.getElementById(section.id).value.trim();
                 if (text) {
-                    const issues = await performGrammarCheckAsync(text, section.name);
+                    console.log(`Checking ${section.name}`);
+                    let issues = performGrammarCheck(text, section.name);
+                    try {
+                        const apiIssues = await checkWithLanguageTool(text, section.name);
+                        issues = issues.concat(apiIssues);
+                    } catch (error) {
+                        issues.push({
+                            type: 'api-error',
+                            message: `${section.name}: LanguageTool API unavailable (rate limit or network issue). Try again in 60 seconds or self-host at https://github.com/languagetool-org/languagetool.`,
+                            severity: 'warning'
+                        });
+                        console.log(`API error for ${section.name}: ${error.message}`);
+                    }
                     allIssues = allIssues.concat(issues);
                     totalWords += text.split(/\s+/).length;
                     errorCount += issues.filter(i => i.severity === 'error').length;
@@ -697,8 +719,10 @@
             button.disabled = false;
 
             displayGrammarResults(allIssues, 'Comprehensive Check');
+            console.log(`Comprehensive check complete: ${allIssues.length} issues found`);
         }
 
+        // LanguageTool API check
         async function checkWithLanguageTool(text, sectionName) {
             const issues = [];
             try {
@@ -723,14 +747,15 @@
                         });
                     });
                 } else {
-                    throw new Error('API request failed');
+                    throw new Error(`HTTP ${response.status}`);
                 }
             } catch (error) {
-                console.log('LanguageTool API error:', error);
+                console.log(`LanguageTool API error for ${sectionName}: ${error.message}`);
             }
             return issues;
         }
 
+        // Display grammar check results
         function displayGrammarResults(issues, checkType) {
             const resultsDiv = document.getElementById('grammar-results');
             if (issues.length === 0) {
@@ -765,6 +790,7 @@
             resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
+        // Generate full essay
         function generateEssay() {
             const sections = [
                 { id: 'intro-part1', label: '' },
@@ -821,6 +847,7 @@ ${readability.readabilityScore === 'Complex' ? '💡 Tip: Consider breaking up s
             }
         }
 
+        // Export essay as text file
         function exportEssay() {
             const essayText = document.getElementById('essay-preview').textContent;
             if (!essayText || essayText.includes('[Please complete')) {
